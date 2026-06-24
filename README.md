@@ -1,10 +1,16 @@
-https://feliks1983.github.io/Simple-Blog-Platform/
+# React + Vite
 
-Установить
-npm install --save-dev --save-exact prettier
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-отформатируйте все файлы с помощью Prettier:
-npx prettier . --write
+Currently, two official plugins are available:
 
-npm install --save-dev husky
-npx husky init
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
