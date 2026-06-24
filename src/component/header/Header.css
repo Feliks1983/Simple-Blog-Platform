@@ -1,0 +1,168 @@
+.container {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  background: #ffffff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  opacity: 1;
+  border-bottom-width: 1px;
+  background: #ffffff;
+  border-bottom: 1px solid #0000001a;
+}
+
+.header-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800зч;
+  height: 40px;
+  margin-left: 240px;
+  opacity: 1;
+}
+
+.header-page {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  opacity: 1;
+  font-family: Source Sans Pro;
+}
+
+.header-page_reaworld-blog {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 34px;
+  opacity: 1;
+}
+
+.header-page_reaworld-blog h1 {
+  display: flex;
+  align-items: center;
+  width: 158px;
+  height: 37px;
+  opacity: 1;
+  font-family: Titilium Bd;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #61bb61;
+}
+
+.header-home {
+  margin-top: 10px;
+  width: 49px;
+  height: 27px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.header-new_post span {
+  margin-top: 10px;
+  display: flex;
+  width: 99px;
+  height: 40px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.header-setting {
+  margin-top: 10px;
+  width: 96px;
+  height: 40px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.header-user {
+  margin-top: 10px;
+  width: 95px;
+  height: 40px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.header-button_icon {
+  margin-top: 10px;
+  display: flex;
+  background: none;
+  border: none;
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+}
+
+.signup-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 60px;
+}
+
+.signup-page a {
+  width: 80px;
+  height: 30px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-family: Titilium Bd;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.signin-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 60px;
+}
+
+.signin-page a {
+  width: 80px;
+  height: 30px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #333333;
+  font-family: Titilium Bd;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}

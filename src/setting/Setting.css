@@ -1,0 +1,32 @@
+.setting {
+  width: 1160px;
+  height: 523px;
+  gap: 10px;
+  opacity: 1;
+  padding: 10px;
+}
+
+.setting-form {
+  display: flex;
+  width: 500px;
+  height: 503px;
+  gap: 16px;
+  opacity: 1;
+  padding-top: 24px;
+  padding-right: 10px;
+  padding-bottom: 24px;
+  padding-left: 10px;
+}
+
+.setting-form h1 {
+  width: 480px;
+  height: 40px;
+  opacity: 1;
+  font-family: Titillium;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 40px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}

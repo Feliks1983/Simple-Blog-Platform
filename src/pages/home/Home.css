@@ -1,0 +1,44 @@
+.home-baner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 190px;
+  opacity: 1;
+  background: #61bb61;
+  color: white;
+}
+
+.home-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 120;
+}
+
+.home-title_text {
+  width: 368px;
+  height: 64px;
+  opacity: 1;
+  font-family: Titilium Bd;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: 0;
+  box-shadow: 1px 1px 8px 0px #0000004d;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.home-text {
+  width: 359px;
+  height: 30px;
+  font-family: Titillium;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0;
+  opacity: 1;
+}

@@ -1,0 +1,132 @@
+.header-profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 348px;
+  padding: 48px 16px;
+  background: #333333;
+  opacity: 1;
+}
+
+.header-frame{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 152px;
+  height: 252px;
+  gap: 10px;
+  opacity: 1;
+  padding: 10px;
+}
+
+.header-frame image {
+  width: 132px;
+  height: 132px;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 64px;
+  gap: 10px;
+  opacity: 1;
+}
+
+.header-text {
+  width: 122px;
+  height: 36px;
+  opacity: 1;
+  color: #FFFFFF;
+  font-family: Titillium Web;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.header-button {
+  border: 1px solid #61BB61;
+  border-radius: 10px;
+}
+
+.header-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 44px;
+  gap: 10px;
+  opacity: 1;
+  background: #333333;
+}
+
+.header-button button img{
+  width: 24px;
+  height: 24px;
+  border-radius: 64px;
+  border-width: 1px;
+  gap: 10px;
+  opacity: 1;
+  border: 1px solid #FFFFFF;
+  padding: 5px;
+}
+
+.header-button button span{
+  width: 64px;
+  height: 23px;
+  opacity: 1;
+  font-family: Source Sans Pro;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #61BB61;
+}
+
+.main-profile{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.main-profile_tabs:hover {
+  border: 2px solid rgb(177, 120, 234);
+}
+
+.main-profile_tabs {
+  display: flex;
+  align-items: center;
+  width: 780px;
+  height: 36px;
+  opacity: 1;
+  border-bottom-width: 1px;
+  border-bottom: 1px solid #0000001A;
+  gap: 10px;
+}
+
+.main-profile_text.active{
+  opacity: 1;
+  color: #5CB85C;
+  border-bottom: 2px solid #5CB85C;
+}
+
+.main-profile_text{
+  width: 98px;
+  height: 36px;
+  padding: 8px 16px;
+  opacity: 1;
+  border-bottom-width: 2px;
+  color: #AAAAAA;
+  border-bottom: 2px solid #AAAAAA;
+  border: none;
+  background: none;
+}
+
+.main-profile_text:hover {
+  border: 2px solid rgb(177, 120, 234);
+}
+
+
