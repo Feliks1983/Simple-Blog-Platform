@@ -15,7 +15,6 @@ export default function Setting() {
   const onSubmit = (data) => console.log(data);
   return (
     <div className="setting">
-      
       <div className="setting-form">
         <h1>Your Setting</h1>
         <form onSubmit={handleSubmit(onSubmit)}>

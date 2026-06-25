@@ -1,18 +1,28 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: auto;
+  height: 100%;
   opacity: 1;
   background: #ffffff;
+}
+
+.main {
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 1280px;
   height: 60px;
   opacity: 1;
-  border-bottom-width: 1px;
   background: #ffffff;
   border-bottom: 1px solid #0000001a;
 }
@@ -21,9 +31,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800зч;
+  width: 800px;
   height: 40px;
-  margin-left: 240px;
   opacity: 1;
 }
 

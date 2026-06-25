@@ -21,9 +21,7 @@ export default function Article() {
         <div className="article-wrapper">
           <div className="article-text">
             <div className="article-text_p">
-              <Markdown>
-                {articleText}
-              </Markdown>
+              <Markdown>{articleText}</Markdown>
             </div>
             <div className="user-info_baner">
               <div className="user-icon_baner">
@@ -31,7 +29,6 @@ export default function Article() {
               </div>
               <div className="user-name_baner">
                 <span className="name_baner">Name Famaly</span>
-
                 <span className="data-baner">data</span>
               </div>
             </div>
@@ -71,17 +68,19 @@ export default function Article() {
             </div>
           </div>
           <div className="info">
-            <div className="article-user_info">
-              <div className="article-user_icon-info">
-                <img src={person} alt="person" />
+            <div className="info">
+              <div className="user-info">
+                <div className="user-icon">
+                  <img src={person} alt="person" />
+                </div>
+                <div className="user-name">
+                  <span className="name">Name Family</span>
+                  <span className="data">data</span>
+                </div>
               </div>
-              <div className="article-user_name-info">
-                <span className="article-name_info">Name Famaly</span>
-                <span className="article-data_info">data</span>
+              <div className="button-container">
+                <button className="button-text">Favorite article</button>
               </div>
-            </div>
-            <div className="button-container">
-              <button className="button-text">Favorite article</button>
             </div>
           </div>
         </div>

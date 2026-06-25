@@ -92,10 +92,6 @@
   margin-top: 20px;
 }
 
-.main-profile_tabs:hover {
-  border: 2px solid rgb(177, 120, 234);
-}
-
 .main-profile_tabs {
   display: flex;
   align-items: center;
@@ -105,6 +101,10 @@
   border-bottom-width: 1px;
   border-bottom: 1px solid #0000001A;
   gap: 10px;
+}
+
+.main-profile_tabs.isactive {
+  border-bottom: 2px solid #AAAAAA;
 }
 
 .main-profile_text.active{
@@ -124,9 +124,4 @@
   border: none;
   background: none;
 }
-
-.main-profile_text:hover {
-  border: 2px solid rgb(177, 120, 234);
-}
-
 

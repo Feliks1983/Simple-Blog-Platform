@@ -22,7 +22,7 @@ export default function Profile() {
       <div className="main-profile">
         <div className="main-profile_tabs">
           <button className="main-profile_text active">Your Feed</button>
-          <button className="main-profile_text">Your Feed</button>
+          <button className="main-profile_text isactive">Your Feed</button>
         </div>
       </div>
       <PageContainer />

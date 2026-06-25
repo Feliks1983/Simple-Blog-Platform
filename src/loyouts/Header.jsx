@@ -1,15 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
 import "./Header.css";
-import edit from "../../../public/assets/icons/edit.svg";
-import setting from "../../../public/assets/icons/settings.svg";
-import person from "../../../public/assets/icons/person.svg";
+import edit from "../../public/assets/icons/edit.svg";
+import setting from "../../public/assets/icons/settings.svg";
+import person from "../../public/assets/icons/person.svg";
 
 export default function Header() {
   return (
     <header className="header">
       <nav className="header-navbar">
         <div className="header-page_reaworld-blog">
-          <h1>Realworld Blog</h1>
+          <Link to="articles/:slug">
+            <h1>Realworld Blog</h1>
+          </Link>
         </div>
         <div className="header-page">
           <Link className="header-home" to="/">
@@ -33,12 +35,6 @@ export default function Header() {
           <Link className="header-user" to="/profile">
             eni9mu5
           </Link>
-        </div>
-        <div className="signup-page">
-          <Link to="/signup">Sign up</Link>
-        </div>
-        <div className="signin-page">
-          <Link to="/signin">Sign in</Link>
         </div>
       </nav>
       <Outlet />

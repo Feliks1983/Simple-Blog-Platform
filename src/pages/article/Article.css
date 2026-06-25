@@ -124,8 +124,6 @@
   height: 20px;
   gap: 10px;
   opacity: 1;
-  border: 1px solid #aaaaaa;
-  border: none;
   width: 768;
 }
 
@@ -150,6 +148,7 @@
 .info {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 748px;
   height: 60px;
   opacity: 1;

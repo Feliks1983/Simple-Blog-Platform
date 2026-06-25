@@ -1,4 +1,7 @@
 .setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1160px;
   height: 523px;
   gap: 10px;
@@ -8,6 +11,8 @@
 
 .setting-form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 500px;
   height: 503px;
   gap: 16px;
