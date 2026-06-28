@@ -1,54 +1,29 @@
 import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 import "./../signin/SignIn.css";
-
+import InputName from "../../component/inputs/InputName";
+import InputEmail from "./../../component/inputs/InputEmail";
+import InputPassword from "../../component/inputs/InputPassword";
 export default function SignUp() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onChange" });
-
-
-  const onSubmit = (data) => console.log(data);
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const dispatch = useDispatch();
+  const onSubmit = (data) => dispatch(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="signin">
         <div className="signin-container">
           <h1>Sign Up</h1>
+          <InputName register={register} errors={errors} />
+          <InputEmail register={register} errors={errors} />
+          <InputPassword register={register} errors={errors} />
           <input
-            className={`signin-empty gap ${errors.username ? "has-error" : ""}`}
-            type="text"
-            placeholder="Username"
-            {...register("username", {
-              required: true,
-              minLength: { value: 3, message: "Min 3 simvol" },
-              maxLength: { value: 20, message: "Max 20 simvol" },
-            })}
-          />
-          <input
-            className={`signin-empty gap ${errors.email ? "has-error" : ""}`}
-            type="text"
-            placeholder="Email"
-            {...register("email", {
-              required: true,
-              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            })}
-          />
-          <input
-            className={`signin-empty gap ${errors.password ? "has-error" : ""}`}
-            type="password"
-            name="password"
-            autoComplete=""
-            placeholder="Password"
-            {...register("password", {
-              required: true,
-              minLength: { value: 6, message: "Min 6 simvol" },
-              maxLength: { value: 40, message: "Max 40 simvol" },
-            })}
-          />
-          <input
-            className={`signin-empty gap ${errors.repeatPassword ? "has-error" : ""}`}
+            className={`signin-empty ${errors.repeatPassword ? "has-error" : ""}`}
             type="password"
             name="password"
             autoComplete=""

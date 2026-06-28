@@ -4,8 +4,8 @@ import User from "../User.jsx";
 import Button from "../Button.jsx";
 
 export default function Post(props) {
-  let users = props.user
-  
+  let users = props.user;
+
   return (
     <>
       <div className="page-component" key={users.slug}>

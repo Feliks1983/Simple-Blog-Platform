@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import person from "../../public/assets/icons/person.svg";
 
-export default function User({user}) {
+export default function User({ user }) {
   return (
     <div className="user-info">
       <div className="user-icon">
@@ -9,7 +9,7 @@ export default function User({user}) {
       </div>
       <div className="user-name">
         <Link className="header-user" to="/profile">
-          <span className="name">Name Famaly</span>
+          <span className="name">{user?.author?.username}</span>
         </Link>
         <span className="data">data</span>
       </div>

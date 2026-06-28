@@ -175,3 +175,16 @@
   line-height: 100%;
   letter-spacing: 0%;
 }
+
+.log-out {
+  width: 200px;
+  height: 40px;
+  color: #333333;
+  font-family: Source Sans Pro Semibold;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  background: none;
+  border: none;
+}

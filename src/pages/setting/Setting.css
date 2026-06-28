@@ -4,7 +4,6 @@
   justify-content: center;
   width: 1160px;
   height: 523px;
-  gap: 10px;
   opacity: 1;
   padding: 10px;
 }
@@ -17,10 +16,7 @@
   height: 503px;
   gap: 16px;
   opacity: 1;
-  padding-top: 24px;
-  padding-right: 10px;
-  padding-bottom: 24px;
-  padding-left: 10px;
+  padding: 24px 10px;
 }
 
 .setting-form h1 {

@@ -37,10 +37,11 @@ export default function PageContainer() {
         if (!ignore) {
           setError(error.message || "no loading");
         }
-      }finally {
+      } finally {
         if (!ignore) {
           setLoading(false);
-        }}
+        }
+      }
     };
     fetchUsers();
     return () => {
@@ -73,13 +74,9 @@ export default function PageContainer() {
         </div>
       ) : (
         <>
-          {users.map(
-            (
-              user,
-            ) => (
-              <Post key={user.slug} user={user} />
-            ),
-          )}
+          {users.map((user) => (
+            <Post key={user.slug} user={user} />
+          ))}
         </>
       )}
       <Pagination

@@ -1,5 +1,5 @@
 export default function Pagination({ pageNumbers, page, onhandlePageClick }) {
-const visiblePages = pageNumbers.slice(0, 7);
+  const visiblePages = pageNumbers.slice(0, 7);
 
   return (
     <ul className="pagination">

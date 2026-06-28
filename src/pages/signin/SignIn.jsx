@@ -1,7 +1,13 @@
 import "./SignIn.css";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { loadUser, userUpdate } from "../../features/post/createSlice";
+import Input from "./../../component/inputs/Input";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   const {
     register,
     handleSubmit,
@@ -11,7 +17,16 @@ export default function SignIn() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const userData = {
+      username: data.username,
+      email: data.email,
+      comment: data.comment,
+      img: data.avatarurl,
+      password: data.password,
+    };
+
+    localStorage.setItem("userUpdate", JSON.stringify(userData));
+    dispatch(userUpdate(userData));
   };
 
   return (
@@ -19,28 +34,7 @@ export default function SignIn() {
       <div className="signin">
         <div className="signin-container">
           <h1>Sign In</h1>
-          <input
-            className={`signin-empty gap ${errors.username ? "has-error" : ""}`}
-            type="text"
-            placeholder="Username"
-            {...register("username", {
-              required: true,
-              minLength: { value: 3, message: "Min 3 simvol" },
-              maxLength: { value: 20, message: "Max 20 simvol" },
-            })}
-          />
-          <input
-            className={`signin-empty gap ${errors.password ? "has-error" : ""}`}
-            type="password"
-            name="password"
-            autoComplete=""
-            placeholder="Password"
-            {...register("password", {
-              required: true,
-              minLength: { value: 6, message: "Min 6 simvol" },
-              maxLength: { value: 40, message: "Max 40 simvol" },
-            })}
-          />
+          <Input register={register} errors={errors} />
           <div className="signin-tab">
             <button type="submit">Sign in</button>
           </div>

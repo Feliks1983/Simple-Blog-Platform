@@ -1,16 +1,17 @@
 .page-component {
   margin-top: 16px;
-  width: auto;
+  width: 800px;
   height: 278px;
   opacity: 1;
   border: 1px solid #aaaaaa;
+  padding: 16px 10px;
 }
 
 .page-heading {
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
-  width: 800px;
+  width: 780px;
   height: 40px;
   opacity: 1;
   margin-left: 0px;
@@ -98,10 +99,9 @@
 }
 
 .page-content {
-  width: 800px;
+  width: 780px;
   height: 196px;
   opacity: 1;
-  margin-left: 10px;
 }
 
 .page-content_text-semibold {

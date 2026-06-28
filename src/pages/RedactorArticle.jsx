@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
 import PageList from "../component/PageList";
 import "./../pages/signin/SignIn.css";
 
@@ -23,11 +22,7 @@ const styleContainer = {
   gap: "16px",
 };
 
-export default function NewPost() {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-
+export default function RedactorArticle() {
   const {
     register,
     handleSubmit,
@@ -35,16 +30,6 @@ export default function NewPost() {
   } = useForm({
     mode: "onChange",
   });
-
-  const onSubmit = (data) => {
-    const userData = {
-      username: data.username,
-      comment: data.comment,
-    };
-    localStorage.setItem("userUpdate", JSON.stringify(userData));
-    dispatch(userUpdate(userData));
-  };
-
   return (
     <div className="write-wraper" style={styleWrite}>
       <div className="write-container" style={styleContainer}>
@@ -70,16 +55,14 @@ export default function NewPost() {
             maxLength: { value: 20, message: "Max 20 simvol" },
           })}
         />
-        <div className="signin-empty_comment">
-          <input
-            className={`signin-empty ${errors.inputYuorText ? "signin-error" : ""}`}
-            type="text"
-            placeholder="Input yuor text"
-            {...register("comment", {
-              required: true,
-            })}
-          />
-        </div>
+        <input
+          className={`signin-empty ${errors.inputYuorText ? "signin-error" : ""}`}
+          type="text"
+          placeholder="Input yuor text"
+          {...register("comment", {
+            required: true,
+          })}
+        />
         <PageList />
       </div>
     </div>

@@ -1,8 +1,8 @@
 .signin {
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 500px;
+  height: 503px;
   padding: 24px 10px;
   gap: 16px;
   opacity: 1;
@@ -17,10 +17,7 @@
   height: 558px;
   padding: 24px 10px;
   opacity: 1;
-}
-
-.signin-container:hover {
-  border: 2px solid rgb(177, 120, 234);
+  gap: 16px;
 }
 
 .signin-container h1 {
@@ -51,11 +48,7 @@
   line-height: 24px;
   letter-spacing: 0%;
   vertical-align: middle;
-  color: #AAAAAA;
-}
-
-.signin-empty:hover {
-  border: 2px solid rgb(177, 120, 234);
+  color: #aaaaaa;
 }
 
 .signin-tab {
@@ -68,10 +61,6 @@
   margin-top: 16px;
 }
 
-.signin-tab:hover {
-  border: 2px solid rgb(177, 120, 234);
-}
-
 .signin-tab button {
   display: flex;
   align-items: center;
@@ -80,22 +69,45 @@
   height: 43px;
   opacity: 1;
   border-width: 1px;
-  border: 1px solid #61BB61;
-  background: #61BB61;
-  color: #FFFFFF;
+  border: 1px solid #61bb61;
+  background: #61bb61;
+  color: #ffffff;
   border-radius: 10px;
   margin-left: 360px;
 }
 
-.signin-tab button:hover {
-  border: 2px solid rgb(177, 120, 234);
+.signin-empty_comment {
+  width: 480px;
+  height: 100px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  border: 1px solid #AAAAAA;
 }
 
-.gap {
-  margin-top: 16px;
+.signin-empty_comment input {
+  width: 448px;
+  height: 68px;
+  opacity: 1;
+  border-width: 1px;
+  padding: 16px;
+  font-family: Source Sans Pro;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #333333;
+  border: none;
+  text-align: left;
 }
 
-.signup-checkbox{
+.signin-empty_comment input::placeholder{
+  text-align: left;
+  color: #333333;
+  opacity: 1;
+}
+
+.signup-checkbox {
   width: 20px;
   height: 20px;
   margin-top: 16px;
@@ -103,5 +115,30 @@
 }
 
 .signin-empty.signin-error {
-  border: 1px solid #ef251e
+  border: 1px solid #ef251e;
+}
+
+.signin-tab_logout {
+  width: 480px;
+  height: 32px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.signin-tab_logout button {
+  width: 150px;
+  height: 32px;
+  padding: 8px 16px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  border: 1px solid #BB6161;
+  font-family: Source Sans Pro;
+  font-weight: 400;
+  font-size: 12.8px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #BB6161;
 }

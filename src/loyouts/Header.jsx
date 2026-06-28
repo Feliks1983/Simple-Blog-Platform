@@ -1,10 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Header.css";
 import edit from "../../public/assets/icons/edit.svg";
 import setting from "../../public/assets/icons/settings.svg";
 import person from "../../public/assets/icons/person.svg";
 
 export default function Header() {
+    const userInfo = useSelector((state) => state.user.userInfo);
   return (
     <header className="header">
       <nav className="header-navbar">
@@ -30,10 +32,22 @@ export default function Header() {
             Setting
           </Link>
           <button className="header-button_icon">
-            <img className="header-icon" src={person} alt="person" />
+            <img
+              className="header-icon"
+              src={userInfo?.img || person}
+              alt="person"
+            />
           </button>
           <Link className="header-user" to="/profile">
-            eni9mu5
+            {userInfo?.username || 'eni9mu5'}
+          </Link>
+        </div>
+        <div className="sign" style={{ display: "none" }}>
+          <Link className="header-user" to="/sign-in">
+            Sign in
+          </Link>
+          <Link className="header-user" to="/sign-up">
+            Sign up
           </Link>
         </div>
       </nav>
