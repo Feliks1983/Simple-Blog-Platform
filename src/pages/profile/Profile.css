@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 1280px;
   height: 348px;
   padding: 48px 16px;
   background: #333333;
@@ -21,11 +21,9 @@
   padding: 10px;
 }
 
-.header-frame image {
+.header-avatar {
   width: 132px;
   height: 132px;
-  min-width: 24px;
-  min-height: 24px;
   border-radius: 64px;
   gap: 10px;
   opacity: 1;
@@ -72,8 +70,9 @@
 }
 
 .header-button button span {
-  width: 64px;
-  height: 23px;
+  display: flex;
+  width: auto;
+  height: auto;
   opacity: 1;
   font-family: Source Sans Pro;
   font-weight: 400;

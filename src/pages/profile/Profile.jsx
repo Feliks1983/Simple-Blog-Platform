@@ -1,11 +1,15 @@
-import PageContainer from "../PageContainer/PageContainer";
+import { useParams } from "react-router-dom";
+import PageContainer from "../page-container/PageContainer";
 import "./Profile.css";
 import BannerUserInfo from "../../component/banner/BannerUserInfo";
 
 export default function Profile() {
+  const { username } = useParams();
+  console.log(username);
+
   return (
     <>
-      <BannerUserInfo />
+      <BannerUserInfo username={username} />
       <div className="main-profile">
         <div className="main-profile_tabs">
           <button className="main-profile_text active">Your Feed</button>

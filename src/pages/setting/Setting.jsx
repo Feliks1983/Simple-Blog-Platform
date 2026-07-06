@@ -1,40 +1,66 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { userUpdate, logout } from "../../features/post/createSlice";
+import { useNavigate } from "react-router-dom";
 import "../../pages/signin/SignIn.css";
 import "./Setting.css";
-import InputName from "../../component/inputs/InputName";
-import InputEmail from "../../component/inputs/InputEmail";
-import InputComment from "../../component/inputs/InputComment";
+import Input from "../../component/inputs/Input";
+import { useAuth } from "../../hooks/AuthContext";
+import inputAtribut from "../../component/inputs/inputAtribut";
+import Textarea from "../../component/inputs/Textarea";
 
 export default function Setting() {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, updateUser, logout } = useAuth();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
+    setError,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({ defaultValues: user });
 
-  const onSubmit = (data) => {
-    const userData = {
-      username: data.username,
-      email: data.email,
-      comment: data.comment,
-      img: data.avatarurl, 
-      password: data.password,
-    };
+  useEffect(() => {
+    if (user) {
+      reset({
+        username: user.username,
+        email: user.email,
+        avatar: user.image || "",
+        bio: user.bio || "",
+      });
+    }
+  }, [user, reset]);
 
-    localStorage.setItem("userUpdate", JSON.stringify(userData));
-    dispatch(userUpdate(userData));
+  const onSubmit = async (data) => {
+    try {
+       const payload = {
+         username: data.username,
+         email: data.email,
+         bio: data.bio,
+         image: data.avatar, 
+       };
+      const result = await updateUser(payload);
+      navigate(`/profile/${result.username}`);
+    } catch (err) {
+      if (err) {
+        err.errors;
+      } else {
+        setError("root", {
+          message: "Failed to update profile. Please try again.",
+        });
+      }
+    }
   };
 
   const onLogout = () => {
-    dispatch(logout());
-    localStorage.removeItem("userUpdate");
+    logout();
+    navigate("/sign-in");
   };
+
+  const visible = inputAtribut.filter(
+    (atr) =>
+      atr.name === "username" || atr.name === "email" || atr.name === "avatar",
+  );
 
   return (
     <div className="setting">
@@ -43,21 +69,22 @@ export default function Setting() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="signin">
             <div className="signin-container">
-              <InputName register={register} errors={errors} />
-              <InputEmail register={register} errors={errors} />
-              <div className="signin-empty_comment">
-                <InputComment register={register} errors={errors} />
-              </div>
-              <input
-                className={`signin-empty ${errors.avatarUrl ? "signin-error" : ""}`}
-                type="text"
-                placeholder="Avatar image (URL)"
-                {...register("avatarurl", {
-                  pattern: /^https?:\/\/[\w\\-]+(\.[\w\\-]+)+[/#?]?.*$/,
-                })}
-              />
+              {visible.map((atr) => (
+                <Input
+                  key={atr.name}
+                  register={register}
+                  errors={errors}
+                  atr={atr}
+                />
+              ))}
+              <Textarea register={register} errors={errors} />
+              {errors.root && (
+                <span className="error">{errors.root.message}</span>
+              )}
               <div className="signin-tab">
-                <button type="submit">Update Setting</button>
+                <button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Updating..." : "Update Setting"}
+                </button>
               </div>
             </div>
           </div>

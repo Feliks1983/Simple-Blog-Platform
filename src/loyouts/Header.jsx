@@ -1,57 +1,61 @@
-import { Link, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import edit from "../../public/assets/icons/edit.svg";
 import setting from "../../public/assets/icons/settings.svg";
 import person from "../../public/assets/icons/person.svg";
+import { useAuth } from "../hooks/AuthContext";
 
 export default function Header() {
-    const userInfo = useSelector((state) => state.user.userInfo);
+  const { isAuthenticated, user, logout, loading } = useAuth();
+
+  if (loading) return null;
+
   return (
     <header className="header">
       <nav className="header-navbar">
         <div className="header-page_reaworld-blog">
-          <Link to="articles/:slug">
-            <h1>Realworld Blog</h1>
-          </Link>
+          <h1>Realworld Blog</h1>
         </div>
-        <div className="header-page">
-          <Link className="header-home" to="/">
-            Home
-          </Link>
-          <button className="header-button_icon">
-            <img className="header-icon" src={edit} alt="edit" />
-          </button>
-          <Link className="header-new_post" to="/new-post">
-            <span>New Post</span>
-          </Link>
-          <button className="header-button_icon">
-            <img className="header-icon" src={setting} alt="favorite" />
-          </button>
-          <Link className="header-setting" to="/setting">
-            Setting
-          </Link>
-          <button className="header-button_icon">
-            <img
-              className="header-icon"
-              src={userInfo?.img || person}
-              alt="person"
-            />
-          </button>
-          <Link className="header-user" to="/profile">
-            {userInfo?.username || 'eni9mu5'}
-          </Link>
-        </div>
-        <div className="sign" style={{ display: "none" }}>
-          <Link className="header-user" to="/sign-in">
-            Sign in
-          </Link>
-          <Link className="header-user" to="/sign-up">
-            Sign up
-          </Link>
-        </div>
+
+        {isAuthenticated ? (
+          <div className="header-page">
+            <div className="header-list">
+              <Link className="header-link" to="/">
+                Home
+              </Link>
+            </div>
+            <div className="header-list">
+              <button className="header-button_icon">
+                <img className="header-icon" src={edit} alt="edit" />
+              </button>
+              <Link className="header-link" to="/new-post">
+                <span>New Post</span>
+              </Link>
+            </div>
+            <div className="header-list">
+              <button className="header-button_icon">
+                <img className="header-icon" src={setting} alt="favorite" />
+              </button>
+              <Link className="header-link" to="/setting">
+                Setting
+              </Link>
+            </div>
+            <div className="header-list">
+              <button className="header-button_icon">
+                <img className="header-icon" src={person} alt="person" />
+              </button>
+              <Link className="header-link" to={`/profile/${user.username}`}>
+                {user.username}
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="sign">
+            <Link to="/sign-in">Sign in</Link>
+            <Link to="/sign-up">Sign up</Link>
+          </div>
+        )}
       </nav>
-      <Outlet />
     </header>
   );
 }

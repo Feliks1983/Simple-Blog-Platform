@@ -1,87 +1,39 @@
-import { useForm } from "react-hook-form";
-import React, { useState } from "react";
-import PageList from "../component/PageList";
-import "./../pages/signin/SignIn.css";
+import { createArticle } from "../api/articles";
+import { useAuth } from "../hooks/AuthContext";
+import { useNavigate } from "react-router-dom";
+import ArticleForm from "../component/ArticleForm";
 
 const styleWrite = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "1160px",
-  height: "391px",
-  opacity: 1,
-  padding: "10px",
-};
-
-const styleContainer = {
-  display: "flex",
   flexDirection: "column",
-  width: "500px",
-  height: "371px",
-  padding: "24px 10px",
+  width: "100%",
+  height: "100%",
   opacity: "1",
-  gap: "16px",
+  fontFamily: "Titillium",
+  fontWeight: "700",
+  fontSize: "30px",
+  lineHeight: "40px",
+  letterSpacing: "0%",
+  textAlign: "center",
+  verticalAlign: "middle",
+  marginTop: "88px",
 };
 
 export default function NewPost() {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
-
-  const onSubmit = (data) => {
-    const userData = {
-      username: data.username,
-      comment: data.comment,
-    };
-    localStorage.setItem("userUpdate", JSON.stringify(userData));
-    dispatch(userUpdate(userData));
+  const onSubmit = async (data) => {
+    const article = await createArticle(data, user);
+    navigate(`/articles/${article.slug}`);
   };
 
   return (
-    <div className="write-wraper" style={styleWrite}>
-      <div className="write-container" style={styleContainer}>
-        <input
-          className={`signin-empty ${errors.title ? "has-error" : ""}`}
-          type="text"
-          placeholder="Title"
-          autoComplete=""
-          {...register("title", {
-            required: true,
-            minLength: { value: 3, message: "Min 3 simvol" },
-            maxLength: { value: 20, message: "Max 20 simvol" },
-          })}
-        />
-        <input
-          className={`signin-empty ${errors.shortDescription ? "has-error" : ""}`}
-          type="text"
-          placeholder="Short discrition"
-          autoComplete=""
-          {...register("shortDescription", {
-            required: true,
-            minLength: { value: 3, message: "Min 3 simvol" },
-            maxLength: { value: 20, message: "Max 20 simvol" },
-          })}
-        />
-        <div className="signin-empty_comment">
-          <input
-            className={`signin-empty ${errors.inputYuorText ? "signin-error" : ""}`}
-            type="text"
-            placeholder="Input yuor text"
-            {...register("comment", {
-              required: true,
-            })}
-          />
-        </div>
-        <PageList />
-      </div>
-    </div>
+    <section className="write" style={styleWrite}>
+      <h2>New Post</h2>
+      <ArticleForm onSubmit={onSubmit} submitLabel="Publish Article" />
+    </section>
   );
 }

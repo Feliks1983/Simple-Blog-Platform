@@ -1,24 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router/Router";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import Header from "./loyouts/Header";
-import { loadStory } from "./features/post/createSlice";
+import { AuthProvider } from "./hooks/AuthContext";
+
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadStory());
-  }, [dispatch]);
-
   return (
     <div className="container">
       <BrowserRouter>
-        <Header />
-        <div className="main">
-          <Router />
-        </div>
+        <AuthProvider>
+          <Header />
+          <div className="main">
+            <Router />
+          </div>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

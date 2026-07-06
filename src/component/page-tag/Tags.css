@@ -1,0 +1,31 @@
+.page-tags {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 16px;
+  width: 760px;
+  height: 20px;
+  gap: 10px;
+  opacity: 1;
+}
+
+.page-tag button {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 20px;
+  opacity: 1;
+  border-radius: 50px;
+  border-width: 1px;
+  border: 1px solid #AAAAAA;
+  padding: 6px 16px;
+  gap: 8px;
+  font-family: Source Sans Pro Semibold;
+  font-weight: 600;
+  font-size: 12.8px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #aaaaaa;
+  background: #ffffff;
+}

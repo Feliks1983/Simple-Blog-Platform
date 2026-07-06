@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .header {
@@ -33,15 +34,19 @@
   align-items: center;
   width: 800px;
   height: 40px;
+  margin-bottom: 10px;
   opacity: 1;
 }
 
 .header-page {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 40px;
   opacity: 1;
   font-family: Source Sans Pro;
+  gap: 8px;
 }
 
 .header-page_reaworld-blog {
@@ -68,37 +73,13 @@
   color: #61bb61;
 }
 
-.header-home {
-  margin-top: 10px;
-  width: 49px;
-  height: 27px;
-  opacity: 1;
-  border-bottom-width: 2px;
-  color: #333333;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.header-new_post span {
-  margin-top: 10px;
+.header-link {
   display: flex;
-  width: 99px;
-  height: 40px;
-  opacity: 1;
-  border-bottom-width: 2px;
-  color: #333333;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.header-setting {
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
-  width: 96px;
-  height: 40px;
+  width: auto;
+  height: auto;
   opacity: 1;
   border-bottom-width: 2px;
   color: #333333;
@@ -121,6 +102,13 @@
   letter-spacing: 0%;
 }
 
+.header-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+}
+
 .header-button_icon {
   margin-top: 10px;
   display: flex;
@@ -134,46 +122,28 @@
   opacity: 1;
 }
 
-.signup-page {
+.sign {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  flex-direction: row;
+  width: 250px;
   height: 60px;
+  gap: 16px;
 }
 
-.signup-page a {
-  width: 80px;
-  height: 30px;
-  opacity: 1;
-  border-bottom-width: 2px;
-  color: #333333;
-  font-family: Titilium Bd;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.signin-page {
+.sign a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 60px;
-}
-
-.signin-page a {
-  width: 80px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
   opacity: 1;
-  border-bottom-width: 2px;
   color: #333333;
+  text-align: center;
   font-family: Titilium Bd;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 .log-out {

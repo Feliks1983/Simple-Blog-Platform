@@ -1,65 +1,70 @@
+import { useEffect, useState } from "react";
 import "./Article.css";
+import { useParams } from "react-router-dom";
 import Markdown from "react-markdown";
 import person from "../../../public/assets/icons/person.svg";
 import BannerArticle from "../../component/banner/BannerArticle";
-
-
-
-const articlePageText = `
-Omnis perspiciatis qui quia commodi sequi modi. Nostrum quam aut
-cupiditate est facere omnis possimus. Tenetur similique nemo illo
-soluta molestias facere quo. Ipsam totam facilis delectus nihil
-quidem soluta vel est omnis.
-`;
+import Tags from "../../component/page-tag/Tags";
+import User from "../../component/user/User";
+import Load from "../../component/load/Load";
+import Error from "../../component/error/Error";
+import ArticleActions from "./ArticleActions";
+import { getArticle } from "../../api/articles";
 
 export default function Article() {
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { slug } = useParams();
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      if (!slug) {
+        setError("Slug not found");
+        return;
+      }
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await getArticle(slug);
+        setArticle(data);
+      } catch (err) {
+        setError(
+          err.errors
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticle();
+  }, [slug]);
+
+  if (loading)
+    return (
+      <div>
+        <Load />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error error={error} />
+      </div>
+    );
+  if (!article) return <div>Article not found</div>;
+
   return (
     <div className="article-page">
       <div className="article-baner">
-        <BannerArticle />
+        <BannerArticle article={article} />
         <div className="article-page_container">
           <div className="article-page_text">
-            <Markdown>{articlePageText}</Markdown>
+            <Markdown>{article.description}</Markdown>
           </div>
-          <div className="article-page_tags">
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-            <div className="article-page_tag">
-              <button>teg</button>
-            </div>
-          </div>
+          <ArticleActions article={article} slug={slug} />
+          <Tags users={article.tagList} />
           <div className="info">
-            <div className="user-info">
-              <div className="user-icon">
-                <img src={person} alt="person" />
-              </div>
-              <div className="user-name">
-                <span className="name">Name Family</span>
-                <span className="data">data</span>
-              </div>
-            </div>
+            <User users={article} />
             <div className="button-container">
               <button className="button-text">Favorite article</button>
             </div>

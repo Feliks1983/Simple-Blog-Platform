@@ -17,54 +17,6 @@
   margin-left: 0px;
 }
 
-.user-info {
-  display: flex;
-  margin-left: 20px;
-  width: 124px;
-  height: 36px;
-  gap: 10px;
-  opacity: 1;
-}
-
-.user-icon img {
-  margin-top: 5px;
-  width: 24px;
-  height: 24px;
-  opacity: 1;
-}
-
-.user-name {
-  font-family: Source Sans Pro Semibold;
-  width: 124px;
-  height: 36px;
-}
-
-.name {
-  display: flex;
-  width: 124px;
-  height: 20px;
-  opacity: 1;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-  color: #5cb85c;
-}
-
-.data {
-  display: flex;
-  width: 124px;
-  height: 16px;
-  opacity: 1;
-  font-family: Source Sans Pro;
-  font-weight: 400;
-  font-size: 12.8px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #aaaaaa;
-}
-
 .button-likes {
   display: flex;
   align-items: center;
@@ -77,6 +29,7 @@
   border-radius: 5px;
   border-width: 1px;
   background: #ffffff;
+  border: 1px solid #61BB61;
 }
 
 .favorite {
@@ -114,13 +67,15 @@
   font-size: 32px;
   line-height: 36px;
   letter-spacing: 0%;
+  color: #333333;
 }
 
 .page-content_regular {
   margin-top: 16px;
   margin-left: 10px;
   width: 760px;
-  height: 72px;
+  height: auto;
+  color: #AAAAAA;
   opacity: 1;
   font-family: Source Sans Pro Semibold;
   font-weight: 400;
@@ -129,52 +84,3 @@
   letter-spacing: 0%;
 }
 
-.page-tags {
-  display: flex;
-  margin-left: 10px;
-  margin-top: 16px;
-  width: 760px;
-  height: 20px;
-  gap: 10px;
-  opacity: 1;
-}
-
-.page-tag button {
-  width: 50px;
-  height: 20px;
-  opacity: 1;
-  border-radius: 50px;
-  font-family: Source Sans Pro Semibold;
-  font-weight: 600;
-  font-size: 12.8px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-  color: #aaaaaa;
-  background: #ffffff;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-  width: 287px;
-  height: 44px;
-  opacity: 1;
-  list-style: none;
-  padding: 0px;
-}
-
-.pagination li a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  border: 1px solid gray;
-  color: #61bb61;
-  border: 1px solid #61bb61;
-}
-
-.pagination li a.active {
-  background-color: #4caf50;
-  color: white;
-}

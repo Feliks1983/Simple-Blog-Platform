@@ -1,8 +1,10 @@
-import Pagination from "../../component/Pagination";
-import Post from "../../component/post/Post";
-import Saidbar from "../../component/Saidbar";
-import "./PageContainer.css";
 import { useState, useEffect } from "react";
+import Pagination from "../../component/pagination/Pagination";
+import Post from "../../component/post/Post";
+import Sidbar from "../../component/Sidbar";
+import "./PageContainer.css";
+import Load from "../../component/load/Load";
+import Error from '../../component/error/Error'
 
 const apiUser = `https://realworld.habsida.net/api/articles`;
 const limit = 3;
@@ -16,10 +18,7 @@ export default function PageContainer() {
   const totalPages = Math.max(1, Math.ceil(userCount / limit));
 
   useEffect(() => {
-    let ignore = false;
     const fetchUsers = async () => {
-      setLoading(true);
-      setError(false);
       try {
         const offset = (page - 1) * limit;
         const response = await fetch(
@@ -29,24 +28,15 @@ export default function PageContainer() {
           throw new Error(`Error: ${response.status}`);
         }
         const data = await response.json();
-        if (!ignore) {
-          setUsers(data.articles || []);
-          setUserCount(data.articlesCount || 0);
-        }
+        setUsers(data.articles || []);
+        setUserCount(data.articlesCount || 0);
+        setLoading(false);
       } catch (error) {
-        if (!ignore) {
-          setError(error.message || "no loading");
-        }
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
+        setError(error.message || "no loading");
+        setLoading(false);
       }
     };
     fetchUsers();
-    return () => {
-      ignore = true;
-    };
   }, [page]);
 
   const handlePageClick = (e, newPage) => {
@@ -60,18 +50,13 @@ export default function PageContainer() {
   return (
     <div className="page">
       <div className="page-container">
-        <Saidbar />
+        <Sidbar />
       </div>
       {error && (
-        <div className="error-message" style={{ color: "red", margin: "20px" }}>
-          {error}
-        </div>
+        <Error />
       )}
       {loading ? (
-        <div className="load">
-          <img src="../../../public/assets/icons/refresh.svg" alt="" />
-          <span>Loading</span>
-        </div>
+        <Load />
       ) : (
         <>
           {users.map((user) => (

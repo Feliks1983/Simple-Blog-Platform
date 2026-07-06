@@ -5,22 +5,26 @@ import Setting from "../pages/setting/Setting";
 import NotFound from "../notfound/NotFound";
 import Article from "../pages/article/Article";
 import Profile from "../pages/profile/Profile";
-import SignIn from  '../pages/signin/SignIn'
-import SignUp from '../pages/signup/SignUp'
-import RedactorArticle from "../pages/RedactorArticle";
+import SignIn from "../pages/signin/SignIn";
+import SignUp from "../pages/signup/SignUp";
+import EditArticle from "../pages/EditArticle";
+import ErrorBoundary from "../notfound/ErrorBoundary";
+import ProtectedRoute from "../component/protected-route/ProtectedRoute";
 
 export default function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/articles/:slug" element={<Article />} />
-      <Route path="/new-post" element={<NewPost />} />
-      <Route path="/setting" element={<Setting />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/redactor-article" element={<RedactorArticle />} />
-      <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/sign-up" element={<SignUp />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <ErrorBoundary>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/articles/:slug" element={<Article />} />
+        <Route path="/new-post" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
+        <Route path="/articles/:slug/edit" element={<ProtectedRoute><EditArticle /></ProtectedRoute>} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </ErrorBoundary>
   );
 }

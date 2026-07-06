@@ -1,20 +1,23 @@
-import { useSelector } from "react-redux";
+import profile from "../../../public/assets/icons/person.svg";
+import { useAuth } from "../../hooks/AuthContext";
 
-export default function BannerUserInfo() {
-  const userInfo = useSelector((state) => state.user.userInfo);
-  const profile = "/assets/icons/profile.png";
+export default function BannerUserInfo({ article, username }) {
+  const { user } = useAuth();
+  const newUser =
+    article?.author || user;
+
   return (
     <div className="header-profile">
       <div className="header-frame">
-        <img src={userInfo?.img || profile} alt="profile" />
-        <span className="header-text">{userInfo?.username || "eni9mu5"}</span>
+        <img className="header-avatar" src={newUser?.image || profile} alt="profile" />
+        <span className="header-text">{newUser?.username || "eni9mu5"}</span>
         <div className="header-button">
           <button>
             <img
               src="../../../public/assets/icons/favorite.svg"
               alt="favorite"
             />
-            <span>{userInfo?.comment || "Text"}</span>
+            <span>{newUser?.bio || "Text"}</span>
           </button>
         </div>
       </div>
