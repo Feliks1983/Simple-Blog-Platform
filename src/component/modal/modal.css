@@ -1,18 +1,23 @@
-
 .modal-overlay {
   position: fixed;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  background: black;
 }
 
 .modal-content {
-  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #9c9b9b;
   padding: 24px;
   border-radius: 8px;
   width: 320px;
+  height: 120px;
 }
 
 .modal-content span {

@@ -2,15 +2,15 @@ export default function Textarea({ register, errors }) {
   return (
     <>
       <textarea
-        className={`signin-empty signin-empty_comment ${errors.bio ? "signin-error" : ""}`}
+        className={`signin-empty signin-empty_comment ${errors.body ? "signin-error" : ""}`}
         type="text"
         name="body"
         placeholder="Input yuor comment"
-        {...register("bio", {
+        {...register("body", {
           required: true,
         })}
       ></textarea>
-      {errors.bio && <span className="error">{errors.bio.message}</span>}
+      {errors.body && <span className="error">{errors.body.message}</span>}
     </>
   );
 }

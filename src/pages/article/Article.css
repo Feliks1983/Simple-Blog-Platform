@@ -1,5 +1,5 @@
 .article-page {
-  width: auto;
+  width: 100%;
   height: auto;
   opacity: 1;
 }
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   height: 772px;
   opacity: 1;
 }
@@ -130,4 +130,5 @@
   border-width: 1px;
   border: 1px solid #61bb61;
   background: #61bb61;
+  color: #FFFFFF;
 }

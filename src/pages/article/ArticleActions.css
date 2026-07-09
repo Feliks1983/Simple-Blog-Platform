@@ -1,0 +1,46 @@
+.article-list {
+  width: 300px;
+  height: 300px;
+  background: black;
+}
+
+.article-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  gap: 16px;
+}
+
+.article-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 133px;
+  height: 43px;
+  min-width: 120px;
+  padding: 10px 12px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  background-color: #61BB61;
+  border: 1px solid #61BB61;
+  color: #FFFFFF;
+}
+
+.article-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 133px;
+  height: 43px;
+  min-width: 120px;
+  padding: 10px 12px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  background-color: #61BB61;
+  border: 1px solid #61BB61;
+  color: #FFFFFF;
+}
+

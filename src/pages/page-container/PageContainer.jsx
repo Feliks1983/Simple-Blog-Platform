@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Pagination from "../../component/pagination/Pagination";
 import Post from "../../component/post/Post";
-import Sidbar from "../../component/Sidbar";
+
 import "./PageContainer.css";
 import Load from "../../component/load/Load";
-import Error from '../../component/error/Error'
+import Error from "../../component/error/Error";
 
 const apiUser = `https://realworld.habsida.net/api/articles`;
 const limit = 3;
@@ -47,23 +47,26 @@ export default function PageContainer() {
 
   const pageNumbers = Array.from({ length: totalPages }, (e, i) => i + 1);
 
+  if (!users)
+    return (
+      <div>
+        <Load />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Error error={error} />
+      </div>
+    );
+
   return (
     <div className="page">
-      <div className="page-container">
-        <Sidbar />
+      <div className="page-users">
+        {users.map((user) => (
+          <Post key={user.slug} user={user} />
+        ))}
       </div>
-      {error && (
-        <Error />
-      )}
-      {loading ? (
-        <Load />
-      ) : (
-        <>
-          {users.map((user) => (
-            <Post key={user.slug} user={user} />
-          ))}
-        </>
-      )}
       <Pagination
         pageNumbers={pageNumbers}
         page={page}

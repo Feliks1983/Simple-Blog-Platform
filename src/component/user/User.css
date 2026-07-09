@@ -1,6 +1,6 @@
 .user-info {
   display: flex;
-  margin-left: 20px;
+  margin-left: 10px;
   width: 124px;
   height: 36px;
   gap: 10px;
@@ -8,7 +8,7 @@
 }
 
 .user-icon {
-    width: 24px;
+  width: 24px;
   height: 24px;
   opacity: 1;
 }

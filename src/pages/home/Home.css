@@ -1,3 +1,10 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .home-baner {
   display: flex;
   align-items: center;
@@ -15,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 800px;
+  width: 100%;
   height: 120px;
 }
 

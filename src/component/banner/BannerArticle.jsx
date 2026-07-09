@@ -6,7 +6,7 @@ export default function BannerArticle({ article }) {
     <div className="article-wrapper">
       <div className="article-text">
         <div className="article-text_p">
-          <Markdown>{article?.title}</Markdown>
+          <Markdown>{article?.title ?? ""}</Markdown>
         </div>
         <div className="user-info_baner">
           <User users={article} />

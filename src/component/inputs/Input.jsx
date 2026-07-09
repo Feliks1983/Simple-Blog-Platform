@@ -2,9 +2,8 @@ export default function Input({
   register,
   errors,
   atr,
-  minMax,
-  validatePassword,
-  userMinMax
+  visibleAtribut,
+  userMinMax,
 }) {
   return (
     <>
@@ -14,15 +13,15 @@ export default function Input({
         placeholder={atr.placeholder}
         autoComplete=""
         {...register(atr.name, {
-          required: atr.required, pattern: atr.pattern,
-          ...(atr.name === 'username' ? userMinMax : {}),
-          ...(atr.name === "password" ? minMax : {}),
-          ...(atr.name === "repeatPassword" ? { validate: validatePassword } : {}),
-        } 
-        )}
+          required: atr.required,
+          pattern: atr.pattern,
+          visibleAtribut, userMinMax
+        })}
       />
 
-      {errors[atr.name] && <span className="error">{errors[atr.name].message}</span>}
+      {errors[atr.name] && (
+        <span className="error">{errors[atr.name].message}</span>
+      )}
     </>
   );
 }

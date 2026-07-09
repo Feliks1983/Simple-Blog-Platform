@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./../../hooks/AuthContext";
 import Load from "../load/Load";
 
-export default function ProtectedRoute({ children }) {
+export function ProtectedRoute({ children }) {
     const { isAuthenticated, loading } = useAuth();
     const location = useLocation();
     if (loading) return <Load />;

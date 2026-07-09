@@ -33,12 +33,12 @@ export default function Setting() {
 
   const onSubmit = async (data) => {
     try {
-       const payload = {
-         username: data.username,
-         email: data.email,
-         bio: data.bio,
-         image: data.avatar, 
-       };
+      const payload = {
+        username: data.username,
+        email: data.email,
+        bio: data.bio,
+        image: data.avatar,
+      };
       const result = await updateUser(payload);
       navigate(`/profile/${result.username}`);
     } catch (err) {
@@ -56,11 +56,7 @@ export default function Setting() {
     logout();
     navigate("/sign-in");
   };
-
-  const visible = inputAtribut.filter(
-    (atr) =>
-      atr.name === "username" || atr.name === "email" || atr.name === "avatar",
-  );
+  const visible = inputAtribut.filter((atr) => atr.visible.includes("setting"));
 
   return (
     <div className="setting">

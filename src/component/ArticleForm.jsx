@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-
 import { createSlice, createAction, nanoid } from "@reduxjs/toolkit";
 import { useNavigate, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "../hooks/AuthContext";
@@ -14,7 +13,7 @@ const styleWriteWraper = {
   alignItems: "center",
   justifyContent: "center",
   width: "500px",
-  height: "391px",
+  height: "auto",
   opacity: 1,
   padding: "10px",
 };
@@ -22,19 +21,20 @@ const styleWriteWraper = {
 const styleContainer = {
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   width: "500px",
-  height: "371px",
+  height: "auto",
   padding: "24px 10px",
   opacity: "1",
   gap: "16px",
 };
 
 const visible = inputAtribut.filter(
-  (atr) => atr.name === "title" || atr.name === "shortDescrition",
+  (atr) => atr.name === "title" || atr.name === "description",
 );
-
+console.log("visible inputs:", visible);
 export default function ArticleForm({
-  defaultValues = {title: "", description: "", body: "" },
   onSubmit,
   submitLabel = "Article",
 }) {
@@ -43,17 +43,19 @@ export default function ArticleForm({
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm({ mode: "onBlur", defaultValues });
+  } = useForm({ mode: "onBlur" });
 
-  const submitHandler = async (data) => {
-    try {
-      await onSubmit(data);
-    } catch (err) {
-      setError("root", {
-        message: err?.message || "Something went wrong.",
-      });
-    }
-  };
+const submitHandler = async (data) => {
+  try {
+    await onSubmit(data);
+  } catch (err) {
+    const rawMessage = err?.errors?.body?.join(", ") || err?.message || "";
+    const message = rawMessage.includes("failed")
+      ? "Статья с таким заголовком уже существует. Попробуйте другой заголовок."
+      : rawMessage || "Что-то пошло не так.";
+    setError("root", { message });
+  }
+};
 
   return (
     <form onSubmit={handleSubmit(submitHandler)} noValidate>

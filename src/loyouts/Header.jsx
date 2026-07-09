@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./Header.css";
 import edit from "../../public/assets/icons/edit.svg";
 import setting from "../../public/assets/icons/settings.svg";
@@ -56,6 +56,7 @@ export default function Header() {
           </div>
         )}
       </nav>
+      <Outlet />
     </header>
   );
 }

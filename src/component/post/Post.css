@@ -1,5 +1,5 @@
 .page-component {
-  margin-top: 16px;
+
   width: 800px;
   height: 278px;
   opacity: 1;
@@ -10,7 +10,6 @@
 .page-heading {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
   width: 780px;
   height: 40px;
   opacity: 1;
@@ -35,7 +34,6 @@
 .favorite {
   width: 24px;
   height: 24px;
-  border-radius: 64px;
   border-width: 1px;
   opacity: 1;
 }
@@ -58,6 +56,8 @@
 }
 
 .page-content_text-semibold {
+  display: flex;
+  align-items: center;
   margin-left: 10px;
   width: 760px;
   height: 72px;

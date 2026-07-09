@@ -32,10 +32,7 @@ export default function SignIn() {
       }
     }
   };
-
-  const visible = inputAtribut.filter(
-    (atr) => atr.name === "username" || atr.name === "email",
-  );
+  const visible = inputAtribut.filter((atr) => atr.visible.includes("sign-in"));
 
   let userMinMax = Length(3, 20);
 
@@ -59,9 +56,6 @@ export default function SignIn() {
               {isSubmitting ? "Signing in..." : "Sign in"}
             </button>
           </div>
-          <p>
-            Don't have an account? <Link to="/sign-up">Sign up</Link>
-          </p>
         </div>
       </div>
     </form>

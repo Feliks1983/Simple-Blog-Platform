@@ -25,6 +25,9 @@ export function AuthProvider({ children }) {
   };
 
   const login = async ({ email, password }) => {
+    if (!email || !password) {
+      throw { errors: { body: ["Email and password are required"] } };
+    }
     const res = await fetch(`${api}/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

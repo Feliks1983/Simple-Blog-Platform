@@ -9,7 +9,7 @@ import SignIn from "../pages/signin/SignIn";
 import SignUp from "../pages/signup/SignUp";
 import EditArticle from "../pages/EditArticle";
 import ErrorBoundary from "../notfound/ErrorBoundary";
-import ProtectedRoute from "../component/protected-route/ProtectedRoute";
+import { ProtectedRoute } from "../component/protected-route/ProtectedRoute";
 
 export default function Router() {
   return (
@@ -17,8 +17,22 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles/:slug" element={<Article />} />
-        <Route path="/new-post" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
-        <Route path="/articles/:slug/edit" element={<ProtectedRoute><EditArticle /></ProtectedRoute>} />
+        <Route
+          path="/new-post"
+          element={
+            <ProtectedRoute>
+              <NewPost />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/articles/:slug/edit"
+          element={
+            <ProtectedRoute>
+              <EditArticle />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/setting" element={<Setting />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/sign-in" element={<SignIn />} />

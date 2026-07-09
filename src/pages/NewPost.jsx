@@ -26,7 +26,7 @@ export default function NewPost() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const article = await createArticle(data, user);
+    const article = await createArticle(user.token, data);
     navigate(`/articles/${article.slug}`);
   };
 

@@ -3,6 +3,8 @@ import './User.css'
 import person from "../../../public/assets/icons/person.svg";
 
 export default function User({ users }) {
+  console.log(users);
+  
   return (
     <div className="user-info">
       <div className="user-icon">
@@ -12,7 +14,7 @@ export default function User({ users }) {
         <Link className="header-user" to="/profile/:username">
           <span className="name">{users?.author?.username}</span>
         </Link>
-        <span className="data">data</span>
+        <span className="data">{users.createdAt}</span>
       </div>
     </div>
   );

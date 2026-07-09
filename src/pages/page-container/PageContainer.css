@@ -3,14 +3,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  width: 100%;
+  width: 800px;
   height: 978px;
   opacity: 1;
+  gap: 16px;
+}
+
+.page-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 .page-container {
-  width:800px;
+  width: 800px;
   height: 88px;
   opacity: 1;
   border: 1px solid #aaaaaa;
@@ -20,14 +28,11 @@
 .sidbar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 16px;
   gap: 12px;
 }
 
 .page-popular_tags {
-  margin-left: 16px;
   font-family: Titilium Bd;
   width: 768px;
   height: 20px;
@@ -37,8 +42,7 @@
 .page-component_list {
   display: flex;
   align-items: center;
-  padding: 16px;
-  width: 792px;
+  width: auto;
   height: 20px;
   gap: 8px;
   opacity: 1;
@@ -54,6 +58,7 @@
   opacity: 1;
   background: #ffffff;
   padding: 6px 16px;
+  border: 1px solid #AAAAAA;
 }
 
 .page-component_item span {

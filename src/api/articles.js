@@ -1,15 +1,16 @@
 const api = "https://realworld.habsida.net/api";
 
-export async function createArticle(token, { title, description, body }) {
+export async function createArticle(
+  token,
+  { title, description, body, tagList = [] },
+) {
   const res = await fetch(`${api}/articles`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${token}`,
+      Authorization: `Token ${token}`,
     },
-    body: JSON.stringify({
-      article: { title, description, body, tagList: [] },
-    }),
+    body: JSON.stringify({ article: { title, description, body, tagList } }),
   });
   const result = await res.json();
   if (!res.ok)
@@ -30,7 +31,7 @@ export async function updateArticle(token, slug, { title, description, body }) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${token}`,
+      Authorization: `Token ${token}`,
     },
     body: JSON.stringify({ article: { title, description, body } }),
   });
@@ -43,9 +44,18 @@ export async function updateArticle(token, slug, { title, description, body }) {
 export async function deleteArticle(token, slug) {
   const res = await fetch(`${api}/articles/${slug}`, {
     method: "DELETE",
-    headers: { Authorization: `${token}` },
+    headers: { Authorization: `Token ${token}` },
   });
   if (!res.ok) throw { errors: { root: ["Failed to delete article"] } };
 }
 
-export default {createArticle, getArticle, updateArticle, deleteArticle}
+export async function favoriteArticle(token, slug) {
+  const res = await fetch(`${api}/articles/${slug}/favorite`, {
+    method: "POST",
+    headers: { Authorization: `Token ${token}` },
+  });
+  const result = await res.json();
+  if (!res.ok)
+    throw { errors: result.errors || { root: ["Failed to like article"] } };
+  return result.article;
+}

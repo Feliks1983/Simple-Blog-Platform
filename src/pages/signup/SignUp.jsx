@@ -4,7 +4,7 @@ import "./../signin/SignIn.css";
 import Input from "../../component/inputs/Input";
 import inputAtribut from "../../component/inputs/inputAtribut";
 import { useAuth } from "../../hooks/AuthContext";
-import Length from '../../component/inputs/length'
+import Length from "../../component/inputs/length";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -19,36 +19,34 @@ export default function SignUp() {
 
   const password = watch("password");
 
- const onSubmit = async (data) => {
-   try {
-     const user = await registerUser({
-       username: data.username,
-       email: data.email,
-       password: data.password,
-     });
-     console.log("registerUser response:", user);
-     navigate(`/profile/${user.username}`);
-   } catch (err) {
-     if (err) {
-      err.errors;
-     } else {
-       setError("root", { type: "server", message: "Connection error" });
-     }
-   }
- };
+  const onSubmit = async (data) => {
+    try {
+      const user = await registerUser({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      });
+      console.log("registerUser response:", user);
+      navigate(`/profile/${user.username}`);
+    } catch (err) {
+      if (err) {
+        err.errors;
+      } else {
+        setError("root", { type: "server", message: "Connection error" });
+      }
+    }
+  };
 
- let minMax = Length(6, 40);
- const validatePassword = (value) => value === password || "Passwords do not match"
- console.log(minMax);
- console.log(validatePassword);
+  let minMax = Length(6, 40);
+  const validatePassword = (value) =>
+    value === password || "Passwords do not match";
 
-  const visible = inputAtribut.filter(
-    (atr) =>
-      atr.name === "username" ||
-      atr.name === "email" ||
-      atr.name === "password" ||
-      atr.name === "repeatPassword",
-  );
+  const visibleAtribut = {
+    username: minMax,
+    repeatPassword: {validate: validatePassword},
+  }
+
+  const visible = inputAtribut.filter((atr) => atr.visible.includes("sign-up"));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -61,17 +59,19 @@ export default function SignUp() {
               register={register}
               errors={errors}
               atr={atr}
-              minMax={minMax}
-              validatePassword={validatePassword}
+              visibleAtribut={visibleAribut}
             />
           ))}
           {errors.name && <span className="error">{errors.name.message}</span>}
+          <div className="wrapper">
             <input
               className="signup-checkbox"
               type="checkbox"
               {...register("agree", { required: true })}
             />
-            I agree to the terms
+            <span>I agree to the terms</span>
+          </div>
+
           {errors.agree && (
             <span className="error">You must agree before continuing</span>
           )}
@@ -83,10 +83,6 @@ export default function SignUp() {
               {isSubmitting ? "Signing up..." : "Sign up"}
             </button>
           </div>
-
-          <p>
-            Already have an account? <Link to="/sign-in">Sign in</Link>
-          </p>
         </div>
       </div>
     </form>

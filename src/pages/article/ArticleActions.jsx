@@ -3,45 +3,46 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthContext";
 import { deleteArticle } from "../../api/articles";
 import ConfirmModal from "../../component/modal/ConfirmModal";
+import './ArticleActions.css'
 
-export default function ArticleActions({ article, slug }) {
+export default function ArticleActions({ slug, authorUsername }) {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const [deleteError, setDeleteError] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
-  const isAuthor =
-    isAuthenticated && article?.author?.username === user?.username;
+  const isAuthor = isAuthenticated && authorUsername === user?.username;
   if (!isAuthor) return null;
 
   const handleDelete = async () => {
-    setIsDelete(true);
+    setDelete(true);
     setDeleteError(null);
     try {
       await deleteArticle(user.token, slug);
       navigate("/");
     } catch (err) {
-      setDeleteError((err));
-      setIsDelete(false);
+      setDeleteError(err);
+      setDelete(false);
     }
   };
 
   return (
-    <>
-      <Link
-        to={`/articles/${slug}/edit`}
-      >
-        <div className="ion-edit" /> Edit
+    <div className="article-action">
+      <Link to={`/articles/${slug}/edit`}>
+        <button type="button" className="article-edit">
+          Edit
+        </button>
       </Link>
       <button
+        type="button"
+        className="article-delete"
         onClick={() => setOpen(true)}
       >
-        <div/> Delete
+        <div /> Delete
       </button>
-      <ConfirmModal
-        isOpen={isOpen}
-        onDelete={handleDelete}
-      />
-    </>
+      {deleteError && <span className="error">{deleteError}</span>}
+      <ConfirmModal isOpen={isOpen} onDelete={handleDelete} />
+    </div>
   );
 }
