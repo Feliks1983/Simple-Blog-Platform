@@ -1,6 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router/Router";
-import React, { useEffect } from "react";
 import Header from "./loyouts/Header";
 import { AuthProvider } from "./hooks/AuthContext";
 

@@ -1,23 +1,21 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext();
 const api = "https://realworld.habsida.net/api";
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("user");
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {
-        localStorage.removeItem("user");
-      }
+const [user, setUser] = useState(() => {
+  const stored = localStorage.getItem("user");
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch {
+      localStorage.removeItem("user");
     }
-    setLoading(false);
-  }, []);
+  }
+  return null;
+});
 
   const saveUser = (userData) => {
     setUser(userData);
@@ -98,7 +96,6 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     isAuthenticated: !!user,
-    loading,
     login,
     register,
     updateUser,
@@ -108,8 +105,5 @@ export function AuthProvider({ children }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("AuthProvider");
-  return ctx;
-}
+export { AuthContext };
+

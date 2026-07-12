@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./../signin/SignIn.css";
 import Input from "../../component/inputs/Input";
 import inputAtribut from "../../component/inputs/inputAtribut";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import Length from "../../component/inputs/length";
 
 export default function SignUp() {
@@ -59,7 +59,7 @@ export default function SignUp() {
               register={register}
               errors={errors}
               atr={atr}
-              visibleAtribut={visibleAribut}
+              visibleAtribut={visibleAtribut}
             />
           ))}
           {errors.name && <span className="error">{errors.name.message}</span>}

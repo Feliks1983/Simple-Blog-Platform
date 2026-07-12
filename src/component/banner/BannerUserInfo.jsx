@@ -1,7 +1,7 @@
 import profile from "../../../public/assets/icons/person.svg";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 
-export default function BannerUserInfo({ article, username }) {
+export default function BannerUserInfo({ article }) {
   const { user } = useAuth();
   const newUser =
     article?.author || user;

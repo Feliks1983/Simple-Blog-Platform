@@ -1,5 +1,5 @@
 import { createArticle } from "../api/articles";
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import ArticleForm from "../component/ArticleForm";
 

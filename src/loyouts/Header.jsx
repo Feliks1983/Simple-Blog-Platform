@@ -3,10 +3,10 @@ import "./Header.css";
 import edit from "../../public/assets/icons/edit.svg";
 import setting from "../../public/assets/icons/settings.svg";
 import person from "../../public/assets/icons/person.svg";
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Header() {
-  const { isAuthenticated, user, logout, loading } = useAuth();
+  const { isAuthenticated, user, loading } = useAuth();
 
   if (loading) return null;
 

@@ -19,6 +19,8 @@ export default function PageContainer() {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true);
+      setError(false);
       try {
         const offset = (page - 1) * limit;
         const response = await fetch(
@@ -30,9 +32,9 @@ export default function PageContainer() {
         const data = await response.json();
         setUsers(data.articles || []);
         setUserCount(data.articlesCount || 0);
-        setLoading(false);
       } catch (error) {
         setError(error.message || "no loading");
+      } finally {
         setLoading(false);
       }
     };
@@ -47,7 +49,7 @@ export default function PageContainer() {
 
   const pageNumbers = Array.from({ length: totalPages }, (e, i) => i + 1);
 
-  if (!users)
+  if (loading)
     return (
       <div>
         <Load />

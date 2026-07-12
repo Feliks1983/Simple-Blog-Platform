@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "../../pages/signin/SignIn.css";
 import "./Setting.css";
 import Input from "../../component/inputs/Input";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import inputAtribut from "../../component/inputs/inputAtribut";
-import Textarea from "../../component/inputs/Textarea";
 
 export default function Setting() {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ export default function Setting() {
         username: user.username,
         email: user.email,
         avatar: user.image || "",
-        bio: user.bio || "",
+        password: user.password || "",
       });
     }
   }, [user, reset]);
@@ -73,7 +72,6 @@ export default function Setting() {
                   atr={atr}
                 />
               ))}
-              <Textarea register={register} errors={errors} />
               {errors.root && (
                 <span className="error">{errors.root.message}</span>
               )}

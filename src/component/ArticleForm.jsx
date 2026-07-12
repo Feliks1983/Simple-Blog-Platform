@@ -1,7 +1,4 @@
 import { useForm } from "react-hook-form";
-import { createSlice, createAction, nanoid } from "@reduxjs/toolkit";
-import { useNavigate, createBrowserRouter } from "react-router-dom";
-import { useAuth } from "../hooks/AuthContext";
 import PageList from "../component/PageList";
 import "./../pages/signin/SignIn.css";
 import Input from "../component/inputs/Input";
@@ -33,7 +30,6 @@ const styleContainer = {
 const visible = inputAtribut.filter(
   (atr) => atr.name === "title" || atr.name === "description",
 );
-console.log("visible inputs:", visible);
 export default function ArticleForm({
   onSubmit,
   submitLabel = "Article",

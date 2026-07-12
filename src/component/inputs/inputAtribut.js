@@ -23,7 +23,7 @@ export const inputAtribut = [
     placeholder: "Avatar image (URL)",
     required: "Введите валидный URL",
     pattern: {
-      value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+      value: /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/,
       message: "Введите валидный URL",
     },
     visible: ["setting"],
@@ -33,7 +33,7 @@ export const inputAtribut = [
     name: "password",
     placeholder: "Password",
     required: "Password is required",
-    visible: ["sign-in", "sign-up"],
+    visible: ["sign-in", "sign-up", "setting"],
   },
   {
     type: "password",

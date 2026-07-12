@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./SignIn.css";
 import Input from "../../component/inputs/Input";
 import inputAtribut from "../../component/inputs/inputAtribut";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import Length from "../../component/inputs/length";
 
 export default function SignIn() {
@@ -18,10 +18,8 @@ export default function SignIn() {
   } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (data) => {
-    console.log("Form data:", data);
     try {
       const user = await login({ email: data.email, password: data.password });
-
       const from = location.state?.from?.pathname;
       navigate(from || `/profile/${user.username}`, { replace: true });
     } catch (err) {

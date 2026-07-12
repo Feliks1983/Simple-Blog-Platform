@@ -3,8 +3,6 @@ import './User.css'
 import person from "../../../public/assets/icons/person.svg";
 
 export default function User({ users }) {
-  console.log(users);
-  
   return (
     <div className="user-info">
       <div className="user-icon">

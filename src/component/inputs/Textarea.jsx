@@ -4,7 +4,7 @@ export default function Textarea({ register, errors }) {
       <textarea
         className={`signin-empty signin-empty_comment ${errors.body ? "signin-error" : ""}`}
         type="text"
-        name="body"
+        name="bio"
         placeholder="Input yuor comment"
         {...register("body", {
           required: true,

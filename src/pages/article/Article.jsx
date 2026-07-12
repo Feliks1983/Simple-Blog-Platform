@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Article.css";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Markdown from "react-markdown";
-import person from "../../../public/assets/icons/person.svg";
 import BannerArticle from "../../component/banner/BannerArticle";
 import Tags from "../../component/page-tag/Tags";
 import User from "../../component/user/User";
@@ -10,26 +9,25 @@ import Load from "../../component/load/Load";
 import Error from "../../component/error/Error";
 import ArticleActions from "../../pages/article/ArticleActions";
 import { getArticle } from "../../api/articles";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
+import Button from "../../component/Button";
 
 export default function Article() {
   const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { slug } = useParams();
   const { user } = useAuth();
-  const navigate = useNavigate();
 
- useEffect(() => {
-   let ignore = false;
-   (async () => {
-     const data = await getArticle(slug);
-     if (!ignore) setArticle(data);
-   })();
-   return () => {
-     ignore = true;
-   };
- }, [slug]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await getArticle(slug);
+        setArticle(data);
+      } catch (err) {
+        setError(err);
+      }
+    })();
+  }, [slug]);
 
   if (!article)
     return (
@@ -44,7 +42,7 @@ export default function Article() {
       </div>
     );
 
-    const isAuthor = user?.username === article.author?.username;
+  const isAuthor = user?.username === article.author?.username;
 
   return (
     <div className="article-page">
@@ -55,16 +53,24 @@ export default function Article() {
             <Markdown>{article.description ?? ""}</Markdown>
             <Markdown>{article.body ?? ""}</Markdown>
           </div>
-          <ArticleActions
-            slug={article.slug}
-            authorUsername={article.author?.username}
-          />
+          {isAuthor && (
+            <ArticleActions
+              slug={article.slug}
+              authorUsername={article.author?.username}
+            />
+          )}
           <Tags users={article.tagList} />
-          
           <div className="info">
             <User users={article} />
             <div className="button-container">
-              <button className="button-text">Favorite article</button>
+              <Button
+                className="button-text"
+                slug={article.slug}
+                favorited={article.favorited}
+                favoritesCount={article.favoritesCount}
+              >
+                Favorite article
+              </Button>
             </div>
           </div>
         </div>

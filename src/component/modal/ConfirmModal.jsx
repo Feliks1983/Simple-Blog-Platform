@@ -3,7 +3,7 @@ import "./modal.css";
 export default function ConfirmModal({
   isOpen,
   onClose,
-  onConfirm,
+  onDelete,
   confirming = false,
 }) {
   if (!isOpen) return null;
@@ -15,7 +15,7 @@ export default function ConfirmModal({
         <div className="modal-actions">
           <button
             className="btn-delete"
-            onClick={onConfirm}
+            onClick={onDelete}
             disabled={confirming}
           >
             {confirming ? "Deleting..." : "Delete"}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { deleteArticle } from "../../api/articles";
 import ConfirmModal from "../../component/modal/ConfirmModal";
 import './ArticleActions.css'
@@ -10,20 +10,19 @@ export default function ArticleActions({ slug, authorUsername }) {
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const [deleteError, setDeleteError] = useState(null);
-  const [deleting, setDeleting] = useState(false);
 
   const isAuthor = isAuthenticated && authorUsername === user?.username;
   if (!isAuthor) return null;
 
-  const handleDelete = async () => {
-    setDelete(true);
+  const handleDelete = () => {
     setDeleteError(null);
     try {
-      await deleteArticle(user.token, slug);
+      deleteArticle(user.token, slug);
       navigate("/");
     } catch (err) {
-      setDeleteError(err);
-      setDelete(false);
+      console.error("Delete article error:", err);
+      setDeleteError("Не удалось удалить статью");
+      setOpen(false)
     }
   };
 

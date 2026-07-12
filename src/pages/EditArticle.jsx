@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { getArticle, updateArticle } from "../api/articles";
 import Input from "../component/inputs/Input";
 import Textarea from "../component/inputs/Textarea";
 import PageList from "../component/PageList";
-import inputAtribut from '../component/inputs/inputAtribut'
+import inputAtribut from "../component/inputs/inputAtribut";
 import "./signin/SignIn.css";
 import Load from "../component/load/Load";
 import Error from "../component/error/Error";
@@ -72,8 +72,12 @@ export default function EditArticle() {
           description: article.description,
           body: article.body,
         });
+        setLoading(false);
       })
-      .catch(() => setLoadError("Не удалось загрузить статью"));
+      .catch(() => {
+        setLoadError("Не удалось загрузить статью");
+        setLoading(false);
+      });
   }, [slug, reset]);
 
   const onSubmit = async (data) => {
@@ -91,11 +95,20 @@ export default function EditArticle() {
   const visible = inputAtribut.filter(
     (atr) => atr.name === "title" || atr.name === "description",
   );
-<div>
-    if (loading) return <p>Loading...<Load /></p>;
-  if (loadError) return <p className="error"><Error /></p>;
-</div>
 
+  if (loading)
+    return (
+      <p>
+        Loading...
+        <Load />
+      </p>
+    );
+  if (loadError)
+    return (
+      <p className="error">
+        <Error />
+      </p>
+    );
 
   return (
     <section className="write" style={styleWrite}>

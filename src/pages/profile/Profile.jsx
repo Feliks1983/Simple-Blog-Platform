@@ -5,8 +5,6 @@ import BannerUserInfo from "../../component/banner/BannerUserInfo";
 
 export default function Profile() {
   const { username } = useParams();
-  console.log(username);
-
   return (
     <>
       <BannerUserInfo username={username} />
