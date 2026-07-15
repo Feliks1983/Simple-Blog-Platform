@@ -1,4 +1,5 @@
 
+npx plugins add vercel/vercel-plugin
 Установить
 npm install --save-dev --save-exact prettier
 
