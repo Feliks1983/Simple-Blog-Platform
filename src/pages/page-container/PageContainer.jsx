@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Pagination from "../../component/pagination/Pagination";
 import Post from "../../component/post/Post";
-
+import { useAuth } from "../../hooks/useAuth";
 import "./PageContainer.css";
 import Load from "../../component/load/Load";
 import Error from "../../component/error/Error";
@@ -14,6 +14,7 @@ export default function PageContainer() {
   const [error, setError] = useState(false);
   const [userCount, setUserCount] = useState(0);
   const [page, setPage] = useState(1);
+  const { user } = useAuth();
 
   const totalPages = Math.max(1, Math.ceil(userCount / limit));
 
@@ -25,6 +26,11 @@ export default function PageContainer() {
         const offset = (page - 1) * limit;
         const response = await fetch(
           `${apiUser}?limit=${limit}&offset=${offset}`,
+          {
+            headers: user?.token
+              ? { Authorization: `Token ${user.token}` }
+              : {},
+          },
         );
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -39,7 +45,7 @@ export default function PageContainer() {
       }
     };
     fetchUsers();
-  }, [page]);
+  }, [page, user?.token]);
 
   const handlePageClick = (e, newPage) => {
     e.preventDefault();

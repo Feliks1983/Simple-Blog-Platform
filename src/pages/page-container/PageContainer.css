@@ -50,57 +50,35 @@
 
 .page-component_item {
   display: flex;
-  justify-content: center;
   align-items: center;
   font-family: Source Sans Pro Semibold;
   border-radius: 10px;
   color: #aaaaaa;
   opacity: 1;
   background: #ffffff;
-  padding: 6px 16px;
-  border: 1px solid #AAAAAA;
 }
 
 .page-component_item span {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 20px;
   opacity: 1;
+  border-radius: 50px;
+  border-width: 1px;
+  border: 1px solid #AAAAAA;
+  padding: 6px 16px;
+  gap: 8px;
+  font-family: Source Sans Pro Semibold;
   font-weight: 600;
   font-size: 12.8px;
   line-height: 100%;
   letter-spacing: 0%;
-  vertical-align: middle;
+  text-align: center;
+  color: #aaaaaa;
+  background: #ffffff;
 }
 
-.page-component_item-one {
-  width: 21px;
-  height: 8px;
-  opacity: 1;
-}
-
-.page-component_item-something {
-  width: 59px;
-  height: 8px;
-  opacity: 1;
-}
-
-.page-component_item-chinese {
-  width: 43px;
-  height: 8px;
-  opacity: 1;
-}
-
-.page-component_item-english {
-  width: 40px;
-  height: 8px;
-  opacity: 1;
-}
-
-.page-component_item-frensh {
-  width: 36px;
-  height: 8px;
-  opacity: 1;
-}
 
 

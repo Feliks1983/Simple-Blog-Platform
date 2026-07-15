@@ -21,13 +21,13 @@ export default function Article() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await getArticle(slug);
+        const data = await getArticle(slug, user?.token);
         setArticle(data);
       } catch (err) {
         setError(err);
       }
     })();
-  }, [slug]);
+  }, [slug, user?.token]);
 
   if (!article)
     return (

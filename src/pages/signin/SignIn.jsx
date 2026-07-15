@@ -4,6 +4,7 @@ import "./SignIn.css";
 import Input from "../../component/inputs/Input";
 import inputAtribut from "../../component/inputs/inputAtribut";
 import { useAuth } from "../../hooks/useAuth";
+import { serverErrors } from "../../component/inputs/serverErrors";
 import Length from "../../component/inputs/length";
 
 export default function SignIn() {
@@ -17,22 +18,29 @@ export default function SignIn() {
     formState: { errors, isSubmitting },
   } = useForm({ mode: "onBlur" });
 
+  let userMax = Length(3, 20);
+  const minMax = Length(6, 40);
+
+  const visibleAtribut = {
+    username: userMax,
+    password: minMax,
+  };
+
+  const visible = inputAtribut.filter((atr) => atr.visible.includes("sign-in"));
+
   const onSubmit = async (data) => {
     try {
       const user = await login({ email: data.email, password: data.password });
       const from = location.state?.from?.pathname;
       navigate(from || `/profile/${user.username}`, { replace: true });
     } catch (err) {
-      if (err) {
-        err.errors;
-      } else {
-        setError("root", { type: "server", message: "Connection error" });
-      }
+      serverErrors(
+        err,
+        setError,
+        visible.map((a) => a.name),
+      );
     }
   };
-  const visible = inputAtribut.filter((atr) => atr.visible.includes("sign-in"));
-
-  let userMinMax = Length(3, 20);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,7 +53,7 @@ export default function SignIn() {
               register={register}
               errors={errors}
               atr={atr}
-              minMax={userMinMax}
+              visibleAtribut={visibleAtribut[atr.name]}
             />
           ))}
           {errors.root && <span className="error">{errors.root.message}</span>}

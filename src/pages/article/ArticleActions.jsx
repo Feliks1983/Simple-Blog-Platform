@@ -3,26 +3,27 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { deleteArticle } from "../../api/articles";
 import ConfirmModal from "../../component/modal/ConfirmModal";
-import './ArticleActions.css'
+import "./ArticleActions.css";
 
 export default function ArticleActions({ slug, authorUsername }) {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const [deleteError, setDeleteError] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   const isAuthor = isAuthenticated && authorUsername === user?.username;
   if (!isAuthor) return null;
 
   const handleDelete = () => {
-    setDeleteError(null);
+    setDeleting(true);
     try {
       deleteArticle(user.token, slug);
       navigate("/");
     } catch (err) {
       console.error("Delete article error:", err);
       setDeleteError("Не удалось удалить статью");
-      setOpen(false)
+      setOpen(false);
     }
   };
 
@@ -41,7 +42,12 @@ export default function ArticleActions({ slug, authorUsername }) {
         <div /> Delete
       </button>
       {deleteError && <span className="error">{deleteError}</span>}
-      <ConfirmModal isOpen={isOpen} onDelete={handleDelete} />
+      <ConfirmModal
+        isOpen={isOpen}
+        onDelete={handleDelete}
+        onClose={() => setOpen(false)}
+        confirming={deleting}
+      />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Input from "../../component/inputs/Input";
 import inputAtribut from "../../component/inputs/inputAtribut";
 import { useAuth } from "../../hooks/useAuth";
 import Length from "../../component/inputs/length";
+import { serverErrors } from "../../component/inputs/serverErrors";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -29,22 +30,24 @@ export default function SignUp() {
       console.log("registerUser response:", user);
       navigate(`/profile/${user.username}`);
     } catch (err) {
-      if (err) {
-        err.errors;
-      } else {
-        setError("root", { type: "server", message: "Connection error" });
-      }
+      serverErrors(
+        err,
+        setError,
+        visible.map((a) => a.name),
+      );
     }
   };
 
-  let minMax = Length(6, 40);
+  let userMax = Length(3, 20);
+  const minMax = Length(6, 40);
   const validatePassword = (value) =>
     value === password || "Passwords do not match";
 
   const visibleAtribut = {
-    username: minMax,
-    repeatPassword: {validate: validatePassword},
-  }
+    username: userMax,
+    password: minMax,
+    repeatPassword: { validate: validatePassword },
+  };
 
   const visible = inputAtribut.filter((atr) => atr.visible.includes("sign-up"));
 
@@ -59,7 +62,7 @@ export default function SignUp() {
               register={register}
               errors={errors}
               atr={atr}
-              visibleAtribut={visibleAtribut}
+              visibleAtribut={visibleAtribut[atr.name]}
             />
           ))}
           {errors.name && <span className="error">{errors.name.message}</span>}

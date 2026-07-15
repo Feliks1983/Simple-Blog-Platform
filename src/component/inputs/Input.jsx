@@ -1,4 +1,4 @@
-export default function Input({ register, errors, atr, visibleAtribut, userMinMax }) {
+export default function Input({ register, errors, atr, visibleAtribut = {} }) {
   return (
     <>
       <input
@@ -9,8 +9,7 @@ export default function Input({ register, errors, atr, visibleAtribut, userMinMa
         {...register(atr.name, {
           required: atr.required,
           pattern: atr.pattern,
-          visibleAtribut,
-          userMinMax,
+          ...visibleAtribut,
         })}
       />
 

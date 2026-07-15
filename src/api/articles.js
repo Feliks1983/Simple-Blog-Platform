@@ -18,8 +18,10 @@ export async function createArticle(
   return result.article;
 }
 
-export async function getArticle(slug) {
-  const res = await fetch(`${api}/articles/${slug}`);
+export async function getArticle(slug, token) {
+  const res = await fetch(`${api}/articles/${slug}`, {
+    headers: token ? { Authorization: `Token ${token}` } : {},
+  });
   const result = await res.json();
   if (!res.ok)
     throw { errors: result.errors || { root: ["Failed to load article"] } };

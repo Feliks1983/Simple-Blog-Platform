@@ -2,7 +2,7 @@
   position: fixed;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: 320px;
   height: 200px;
   display: flex;
   background: black;
@@ -39,9 +39,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 16px;
 }
 
-.btn-delete {
+.btn-delete, .btn-cancel {
   display: flex;
   justify-content: center;
   align-items: center;

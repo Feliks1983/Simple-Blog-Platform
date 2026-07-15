@@ -33,7 +33,14 @@ export const inputAtribut = [
     name: "password",
     placeholder: "Password",
     required: "Password is required",
-    visible: ["sign-in", "sign-up", "setting"],
+    visible: ["sign-up", "sign-in"],
+  },
+  {
+    type: "password",
+    name: "newPassword",
+    placeholder: "New Password",
+    required: "Password is required",
+    visible: ["setting"],
   },
   {
     type: "password",

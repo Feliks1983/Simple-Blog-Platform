@@ -31,6 +31,10 @@
   border: 1px solid #61BB61;
 }
 
+.button-likes_active {
+  background: rgb(146, 220, 28);
+}
+
 .favorite {
   width: 24px;
   height: 24px;

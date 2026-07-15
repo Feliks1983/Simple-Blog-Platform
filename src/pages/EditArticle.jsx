@@ -98,17 +98,19 @@ export default function EditArticle() {
 
   if (loading)
     return (
-      <p>
+      <div>
         Loading...
         <Load />
-      </p>
+      </div>
     );
   if (loadError)
     return (
-      <p className="error">
+      <div className="error">
         <Error />
-      </p>
+      </div>
     );
+
+  const popularTags = ["one", "something", "chinese", "english", "frensh"];
 
   return (
     <section className="write" style={styleWrite}>
@@ -128,7 +130,11 @@ export default function EditArticle() {
             {errors.root && (
               <span className="error">{errors.root.message}</span>
             )}
-            <PageList />
+            <div className="page-component_list">
+              {popularTags.map((tags) => (
+                <PageList key={tags} tags={tags} />
+              ))}
+            </div>
             <div className="signin-tab">
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Publishing..." : "Publish Article"}

@@ -11,8 +11,14 @@ export default function ConfirmModal({
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h3>Delete article</h3>
         <div className="modal-actions">
+          <button
+            className="btn-cancel"
+            onClick={onClose}
+            disabled={confirming}
+          >
+            Cancel
+          </button>
           <button
             className="btn-delete"
             onClick={onDelete}

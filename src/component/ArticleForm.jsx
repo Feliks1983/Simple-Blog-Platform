@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import PageList from "../component/PageList";
 import "./../pages/signin/SignIn.css";
+import './../pages/page-container/PageContainer.css'
 import Input from "../component/inputs/Input";
 import Textarea from "../component/inputs/Textarea";
 import inputAtribut from "../component/inputs/inputAtribut";
@@ -53,6 +54,9 @@ const submitHandler = async (data) => {
   }
 };
 
+const popularTags = ["one", "something", "chinese", "english", "frensh"];
+
+
   return (
     <form onSubmit={handleSubmit(submitHandler)} noValidate>
       <div className="write-wraper" style={styleWriteWraper}>
@@ -67,7 +71,11 @@ const submitHandler = async (data) => {
           ))}
           <Textarea register={register} errors={errors} />
           {errors.root && <span className="error">{errors.root.message}</span>}
-          <PageList />
+          <div className="page-component_list">
+            {popularTags.map((tags) => (
+              <PageList key={tags} tags={tags} />
+            ))}
+          </div>
           <div className="signin-tab">
             <button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Save Post" : submitLabel}

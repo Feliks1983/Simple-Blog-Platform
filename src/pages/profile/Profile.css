@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 150px;
   height: 36px;
   opacity: 1;
   color: #ffffff;
@@ -43,6 +43,12 @@
   line-height: 36px;
   letter-spacing: 0%;
   vertical-align: middle;
+}
+
+.header-text span {
+  display: flex;
+  width: auto;
+  height: auto;
 }
 
 .header-button {
