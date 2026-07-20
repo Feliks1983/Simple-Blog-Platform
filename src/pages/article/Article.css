@@ -10,7 +10,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 772px;
+  height: auto;
   opacity: 1;
 }
 
@@ -76,6 +76,11 @@
   line-height: 24px;
   letter-spacing: 0%;
   vertical-align: middle;
+}
+
+.article-page_text pre, 
+.article-page_text code {
+  white-space: pre-wrap;
 }
 
 .article-page_tags {

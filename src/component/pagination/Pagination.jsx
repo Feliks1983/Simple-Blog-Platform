@@ -1,5 +1,5 @@
-import { useState } from "react";
-import './Pagination.css'
+import { useState, useEffect } from "react";
+import "./Pagination.css";
 
 export default function Pagination({ pageNumbers, page, onhandlePageClick }) {
   const [currentGroup, setCurrentGroup] = useState(0);
@@ -9,16 +9,29 @@ export default function Pagination({ pageNumbers, page, onhandlePageClick }) {
   const endIndex = Math.min(startIndex + pagesGroup, pageNumbers.length);
   const visiblePages = pageNumbers.slice(startIndex, endIndex);
 
+  useEffect(() => {
+    const index = pageNumbers.indexOf(page);
+    if (index !== -1) {
+      const groupForPage = Math.floor(index / pagesGroup);
+      setCurrentGroup(groupForPage);
+    }
+  }, [page, pageNumbers]);
+
   const handlePrevGroup = () => {
     if (currentGroup > 0) {
       setCurrentGroup(currentGroup - 1);
     }
   };
-  
+
   const handleNextGroup = () => {
     if (currentGroup < totalGroups - 1) {
       setCurrentGroup(currentGroup + 1);
     }
+  };
+
+  const handlePageClick = (e, number) => {
+    e.preventDefault();
+    onhandlePageClick(e, number);
   };
 
   return (
@@ -37,7 +50,7 @@ export default function Pagination({ pageNumbers, page, onhandlePageClick }) {
           <a
             href="#"
             className={page === number ? "active" : ""}
-            onClick={(e) => onhandlePageClick(e, number)}
+            onClick={(e) => handlePageClick(e, number)}
           >
             {number}
           </a>
@@ -49,7 +62,7 @@ export default function Pagination({ pageNumbers, page, onhandlePageClick }) {
           disabled={currentGroup === totalGroups - 1}
           className="pagination-nav"
         >
-           &gt;
+          &gt;
         </button>
       </li>
     </ul>
