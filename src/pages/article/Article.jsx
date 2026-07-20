@@ -10,7 +10,6 @@ import Error from "../../component/error/Error";
 import ArticleActions from "../../pages/article/ArticleActions";
 import { getArticle } from "../../api/articles";
 import { useAuth } from "../../hooks/useAuth";
-import Button from "../../component/Button";
 
 export default function Article() {
   const [article, setArticle] = useState(null);
@@ -63,14 +62,7 @@ export default function Article() {
           <div className="info">
             <User users={article} />
             <div className="button-container">
-              <Button
-                className="button-text"
-                slug={article.slug}
-                favorited={article.favorited}
-                favoritesCount={article.favoritesCount}
-              >
-                Favorite article
-              </Button>
+              <button className="button-text">Favorite article</button>
             </div>
           </div>
         </div>
